@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>welcome Page</title>
+<meta name="viewport" content="width=device-width",initial-scale=1>
+
+	<script  src="js/jquery.js"></script>
+	<script  src="js/jquery.mobile-1.4.5.js"></script>
+	<link rel="stylesheet"  href="js/jquery.mobile-1.4.5.css">
+
+</head>
+
+<body>
+
+<div data-role="page" id="homepage" data-theme="a">
+
+		<div data-role="header">
+			<h1>Simple Calculator</h1>
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#homepage" data-icon="home">Home</a></li>
+					<li><a href="#calpage" data-icon="grid">Calculator</a></li>
+					<li><a href="#pagehelp" data-icon="info">Help</a></li>
+				</ul>
+			</div>
+
+		</div> <!-- hearder 1 -->
+
+		<div role="main" class="ui-content">
+			<p>This is a jQuery mobile exercise which provides the user with a calculator for basic mathematical operations.</p>
+		</div>
+
+		<div data-role="footer">
+			<h2>Homework</h2>
+		</div>
+</div> <!--End of homepage 1 and start of calculator page-->
+
+<div data-role="page" id="calpage" data-theme="a">
+
+			<div data-role="header">
+			<h1>Simple Calculator</h1>
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#homepage" data-icon="home">Home</a></li>
+					<li><a href="#calpage" data-icon="grid">Calculator</a></li>
+					<li><a href="#pagehelp" data-icon="info">Help</a></li>
+				</ul>
+			</div>
+
+		</div> <!-- hearder 2 -->
+		
+		<div role="main" class="ui-content">
+			<form method="post" action="demoform.asp">
+				<div class="ui-field-contain">
+					
+					<input type="number" id="num1">
+					
+					<select name="caloperation" onclick="notefunction()" id="caloperation" >
+					<option value="+">+</option>
+					<option value="-">-</option>
+					<option value="*">*</option>
+					<option value="/">/</option>
+				</select>
+
+					<input type="number" id="num2">
+
+					<a href="#resultpage" type="button" value="calculate" id="calbtn" class="ui-btn">Calculate</a>
+				</div>
+		</div>
+
+		<div data-role="footer">
+			<h2>Homework</h2>
+		</div>
+
+		<div data-role="note" >
+			<p id="note"></p>
+		</div>
+</div> <!-- end of calculate page and start of result page  -->
+
+<div data-role="page" id="resultpage" data-theme="a">
+
+			<div data-role="header">
+			<h1>RESULTS</h1>
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#homepage" data-icon="home">Home</a></li>
+					<li><a href="#" data-icon="grid">Calculator</a></li>
+					<li><a href="#pagehelp" data-icon="info">Help</a></li>
+				</ul>
+			</div>
+		</div> <!-- hearder 3 -->
+
+		<div role="main" class="ui-content">
+			<form method="action" action="demoform.asp">
+				<div class="ui-field-contain">
+					
+					<label>Operation:</label>
+					<label id="opedisplay"></label>
+					<br> <label>Result: </label>
+					<input id="resltdisplay" style="width:25%"></input>
+
+					
+					<a href="#calpage" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+				
+				</div>
+			</form>
+		</div>
+
+		<div data-role="footer">
+			<h2>Homework</h2>
+		</div>
+	</div>
+		<!-- start of help page  -->
+
+<div data-role="page" data-dialog="true" id="pagehelp" data-theme="a"> <!-- dialog box here -->
+
+		<div data-role="header">
+			<h1>More info</h1>
+		</div> <!-- hearder 1 -->
+
+		<div role="main" class="ui-content">
+			<p>You have requested more information about the App!</p>
+			<a href="#homepage" class="ui-btn ui-icon-back ui-btn-icon-left">Dismiss</a>
+		</div>
+		</div> <!-- end of page help  -->
+
+
+
+
+<script type="text/javascript">
+
+function notefunction() {
+		document.getElementById("note").innerHTML="Note: Consider the following 4 operations in the drop down: +,-,*,/"
+	}
+
+$(document).ready(function(){
+	$("#calbtn").click(function(){
+	$("#opedisplay").html($("#num1").val() + $("#caloperation").val() + $("#num2").val());
+
+});
+});
+
+
+	$(document).ready(function(){
+
+		$("#calbtn").click(function(){
+			
+			var caloperation = $("#caloperation").val();
+
+			
+				if (caloperation == "+"){
+				var a = $("#num1").val();
+			var b = $("#num2").val();
+				
+				var r = parseInt(a) + parseInt(b);
+				$("#resltdisplay").val(r);
+			} else if (caloperation == "-"){
+				var a = $("#num1").val();
+			var b = $("#num2").val();
+			
+
+				var r = parseInt(a) - parseInt(b);
+				$("#resltdisplay").val(r);
+			} else if (caloperation == "*"){
+				var a = $("#num1").val();
+			var b = $("#num2").val();
+			
+
+				var r = parseInt(a) * parseInt(b);
+				$("#resltdisplay").val(r);
+			} else if (caloperation == "/"){
+				var a = $("#num1").val();
+			var b = $("#num2").val();
+			
+
+				var r = parseInt(a) / parseInt(b);
+				$("#resltdisplay").val(r);
+			}
+						
+			
+		});
+
+		
+		
+		
+	});
+
+</script>
+</body>
+</html>
